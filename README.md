@@ -28,3 +28,17 @@ This is a demo app to show you how to get a simple app and running with PhoneGap
 ## 5. Add qUnit tests
 
 ## 6. Refactoring to patterns and utilize XUI and Lawnchair libs
+
+# PhoneGap BlackBerry
+
+- Add BlackBerry 4.6.x support to Step 6
+- Search __@blackberry__ in `pg-training/06 - refactor to xui and lawnchair/`
+
+## Installation / Creating Projects / Importing into Eclipse
+
+The [README](http://github.com/phonegap/phonegap-blackberry/blob/master/README.md) on the [phonegap-blackberry repository](http://github.com/phonegap/phonegap-blackberry) has been updated with detailed instructions.
+
+## Kill BlackBerry Simulator
+
+- [Small batch script to auto-close the simualtor](http://gist.github.com/537194).
+
