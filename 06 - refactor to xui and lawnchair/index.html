@@ -7,13 +7,19 @@
 		
 		<script src="phonegap.js" type="text/javascript" charset="utf-8"></script>
 		
+		<!-- @blackberry does not support JSON out of the box. Grab a copy of [http://www.json.org/json2.js] -->
+		<script src="assets/js/json2.js" type="text/javascript" charset="utf-8"></script>
+		
+		<!-- @blackberry needs a special XUI build.  This uses the Sizzle selector engine.
+		     Download the XUI repository and run `ruby build profile=bb` then copy 'lib/xui-bb.js' -->
 		<script src="assets/js/xui.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script src="assets/js/lawnchair/adaptors/LawnchairAdaptorHelpers.js" type="text/javascript" charset="utf-8"></script>
 		
-		<script src="assets/js/lawnchair/adaptors/DOMStorageAdaptor.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script src="assets/js/lawnchair/adaptors/WebkitSQLiteAdaptor.js" type="text/javascript" charset="utf-8"></script>
+		<!-- @blackberry uses the BlackBerry Persistent Storage adaptor because DOMStorage and SQLite are not supported.
+		     The Persistent Storage adaptor leverages the Java persistent store hash table.
+		     [http://www.blackberry.com/developers/docs/4.6.0api/net/rim/device/api/system/PersistentStore.html] -->
+		<script src="assets/js/lawnchair/adaptors/BlackBerryPersistentStorageAdaptor.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script src="assets/js/lawnchair/Lawnchair.js" type="text/javascript" charset="utf-8"></script>
 		
@@ -26,8 +32,9 @@
  		<div id="title_bar">PhoneGap Training App</div>
 
 		<div id="welcome" class="view">
-		  <div class="app_button" id="map_button">Show My Location</div>
-  	      <div class="app_button" id="settings_button">Settings</div>
+		  <!-- @blackberry you use anchor tags instead of div tags. -->
+		  <a href="#" class="app_button" id="map_button">Show My Location</a>
+		  <a href="#" class="app_button" id="settings_button">Settings</a>
 		</div>
 
 		<div id="map" class="view">
@@ -35,7 +42,8 @@
               <img id="static_map" src="assets/img/staticmap.png">
 		  </div>
 		  <p>This is where you are</p>
-		  <div class="app_button" id="welcome_button">Go Back</div>
+		  <!-- @blackberry you use an anchor tag instead of div tag. -->
+		  <a href="#" class="app_button" id="welcome_button">Go Back</a>
 		</div>
 
 		<div id="settings" class="view">

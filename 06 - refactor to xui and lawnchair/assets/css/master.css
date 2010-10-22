@@ -13,12 +13,26 @@ body {
   width: 90%;
 }
 
+/**
+ * @blackberry
+ *
+ * On the BlackBerry, all buttons should be an achor tag <a href="#">...</a>
+ * You will want to do this so that the cursor renders correctly and
+ * (optionally) focused based navigation will highlight the links.
+ *
+ * In order to mimic the behaviour of a <div>, we display the buttons as a block
+ * and remove text-decoration that would be introduced by the anchor.
+ *
+ * An alternative would be to set the `cursor:pointer;`
+ */
 .app_button {
   background: gold;
   border: khaki;
+  display: block;        /* @blackberry minic <div> display type */
   margin: 15px auto;
   padding: 5px;
   width: 200px;
+  text-decoration: none; /* @blackberry remove anchor styling (underline) */
   -webkit-border-radius: 5px;
 }
 
@@ -27,15 +41,15 @@ body {
 }
 
 /**
- * Since all of the views are the same, we'll set them to static widths and heights to match our device.
+ * @blackberry
+ *
+ * For cross-platform compatability, the view containers should use percentage dimensions.
+ * This produces a liquid-layout that is flexible to the device's screen dimensions.
  **/
  
 .view {
-	width: 320px;
-	/* on the iPhone, we have to account for the 20px status bar at the top */
-	/* 480 - 20 = 460 */
-	/* then 460 - 40 to account for our title bar */
-	height: 420px;
+	width: 100%;    /* @blackberry */
+	height: 100%;   /* @blackberry */
 	
 	/*  only one view is displayed at a time
 	    so we'll set the views to default to be un-displayed
