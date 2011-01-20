@@ -27,15 +27,15 @@ body {
 }
 
 /**
- * Since all of the views are the same, we'll set them to static widths and heights to match our device.
- **/
- 
+* @blackberry
+*
+* For cross-platform compatability, the view containers should use percentage dimensions.
+* This produces a liquid-layout that is flexible to the device's screen dimensions.
+**/
+
 .view {
-	width: 320px;
-	/* on the iPhone, we have to account for the 20px status bar at the top */
-	/* 480 - 20 = 460 */
-	/* then 460 - 40 to account for our title bar */
-	height: 420px;
+	width: 100%;    /* @blackberry */
+	height: 100%;   /* @blackberry */
 	
 	/*  only one view is displayed at a time
 	    so we'll set the views to default to be un-displayed
