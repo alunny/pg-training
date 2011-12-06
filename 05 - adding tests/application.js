@@ -49,7 +49,7 @@ function appInit() {
   }
   
   // check if we can access google.com
-  navigator.network.isReachable("google.com", isNetworkAvailable);
+  isNetworkAvailable();
 }
 
 // this function will allow us to hide the current view and
@@ -68,21 +68,26 @@ function displayView(id) {
   }
 }
 
-// letting the user know if we can't get any maps
-function isNetworkAvailable(status) {
-	if (status.internetConnectionStatus === NetworkStatus.NOT_REACHABLE) {
-		navigator.notification.alert(
-		  "No internet connection - we won't be able to show you any maps", 
-		  "PhoneGap Training", 
-		  "Okay");
-	} else {
-		navigator.notification.alert(
-		  "We can reach Google - get ready for some awesome maps!", 
-		  "PhoneGap Training", 
-		  "Huzzah!");
+function isNetworkAvailable() {
+	try {
+		var networkState = navigator.network.connection.type;
+
+		if (networkState === Connection.NONE) {
+			navigator.notification
+					.alert(
+							"No internet connection - we won't be able to show you any maps",
+							null, "PhoneGap Training", "Okay");
+		} else {
+			navigator.notification
+					.alert(
+							"We can reach the internet - get ready for some awesome maps!",
+							null,
+							"PhoneGap Training", "Let's Go!");
+		}
+	} catch (e) {
+		alert("Error: " + e);
 	}
 }
-
 // replacing the placeholder image with an image based on the given location
 function displayGoogleMap(position, mapType, zoomLevel) {
   var location = "" + position.coords.latitude + "," + position.coords.longitude;
